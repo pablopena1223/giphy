@@ -5,10 +5,14 @@ body {
 }
 
 .navbar-brand {
-    color: white;	
+    color: white;
 }
 
 footer {
     padding-top: 100px;
     margin: 50px 0;
+}
+
+#display{
+    text-align: center;
 }

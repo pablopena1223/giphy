@@ -3,17 +3,20 @@
 //****************** SERIOUSLY TEST USING console.log()!!! ******************
 /* global $ */
 
-var giphy_api_url = 'https://api.giphy.com/v1/gifs/search?q=puppy&rating=pg&api_key=dc6zaTOxFJmzC'
 
 $("#search-button").click(function(){
 
+    var searchTerm = $("input").val();
+    var newUrl = `https://api.giphy.com/v1/stickers/search?q=${searchTerm}&rating=pg&api_key=dc6zaTOxFJmzC`;
+
   $.ajax({
-        url: giphy_api_url,
+        url: newUrl,
         method: "GET",
         success: function(response) {
-            var originalImage = response.data[0].images.fixed_width.url;
-            $('body').append('<img src="' +  originalImage + '"/>');
-            // YOUR CODE GOES HERE
+            var randomPic = Math.random()*response.data.length
+            var picIndex = Math.floor(randomPic);
+            var originalImage = response.data[picIndex].images.fixed_width.url;
+            $('#display').html(`<img src=${originalImage}>`);
         }
     });
 
